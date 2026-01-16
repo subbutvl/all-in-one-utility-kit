@@ -52,6 +52,13 @@ import { WorldClock } from './modules/worldclock/WorldClock';
 import { CurrencyConverter } from './modules/worldclock/CurrencyConverter';
 import { WeatherForecaster } from './modules/worldclock/WeatherForecaster';
 import { QuotesGenerator } from './modules/worldclock/QuotesGenerator';
+import { MovieRecommendation } from './modules/worldclock/MovieRecommendation';
+import { TvShowRecommendation } from './modules/worldclock/TvShowRecommendation';
+import { BookRecommendation } from './modules/worldclock/BookRecommendation';
+import { SongRecommendation } from './modules/worldclock/SongRecommendation';
+import { PlaceRecommendation } from './modules/worldclock/PlaceRecommendation';
+import { PowerfulPeople } from './modules/worldclock/PowerfulPeople';
+import { RandomFacts } from './modules/worldclock/RandomFacts';
 
 // Calendar Module
 import { Calendar } from './modules/calendar/Calendar';
@@ -129,6 +136,13 @@ const IconTarget = () => <svg xmlns="http://www.w3.org/2000/svg" width="18" heig
 const IconBookmark = () => <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z"/></svg>;
 const IconQuote = () => <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1 0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z"/><path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1 0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z"/></svg>;
 const IconRss = () => <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 11a9 9 0 0 1 9 9"/><path d="M4 4a16 16 0 0 1 16 16"/><circle cx="5" cy="19" r="1"/></svg>;
+const IconFilm = () => <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M7 3v18"/><path d="M17 3v18"/><path d="M3 7h4"/><path d="M3 12h4"/><path d="M3 17h4"/><path d="M17 7h4"/><path d="M17 12h4"/><path d="M17 17h4"/></svg>;
+const IconTv = () => <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="20" height="15" x="2" y="7" rx="2" ry="2"/><polyline points="17 2 12 7 7 2"/></svg>;
+const IconBook = () => <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>;
+const IconMusic = () => <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>;
+const IconMapPin = () => <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>;
+const IconUsers = () => <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>;
+const IconInfo = () => <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" x2="12" y1="16" y2="12"/><line x1="12" x2="12.01" y1="8" y2="8"/></svg>;
 
 export const TOOLS: Tool[] = [
   // Curated Resources (Highlighted diff color in Layout)
@@ -279,6 +293,62 @@ export const TOOLS: Tool[] = [
     category: 'Time & Date',
     icon: <IconQuote />,
     component: QuotesGenerator,
+  },
+  {
+    id: 'movie-rec',
+    name: 'Movie Hub (AI Opt)',
+    description: 'Get curated cinema recommendations or let AI find your next favorite film.',
+    category: 'Time & Date',
+    icon: <IconFilm />,
+    component: MovieRecommendation,
+  },
+  {
+    id: 'tv-rec',
+    name: 'TV Show Hub (AI Opt)',
+    description: 'Discover trending series across all streaming platforms with AI insights.',
+    category: 'Time & Date',
+    icon: <IconTv />,
+    component: TvShowRecommendation,
+  },
+  {
+    id: 'book-rec',
+    name: 'Book Hub (AI Opt)',
+    description: 'Explore timeless classics and modern bestsellers curated for your reading lists.',
+    category: 'Time & Date',
+    icon: <IconBook />,
+    component: BookRecommendation,
+  },
+  {
+    id: 'song-rec',
+    name: 'Song Hub (AI Opt)',
+    description: 'Find your next anthem through expertly picked tracks or AI mood matching.',
+    category: 'Time & Date',
+    icon: <IconMusic />,
+    component: SongRecommendation,
+  },
+  {
+    id: 'place-rec',
+    name: 'Travel Hub (AI Opt)',
+    description: 'Discover breathtaking locations and hidden gems around the globe.',
+    category: 'Time & Date',
+    icon: <IconMapPin />,
+    component: PlaceRecommendation,
+  },
+  {
+    id: 'people-hub',
+    name: 'Impactful Minds (AI Opt)',
+    description: 'Biographies and wisdom from the world\'s most powerful and influential people.',
+    category: 'Time & Date',
+    icon: <IconUsers />,
+    component: PowerfulPeople,
+  },
+  {
+    id: 'fact-hub',
+    name: 'Fact Vault (AI Opt)',
+    description: 'Expand your knowledge with mind-bending facts and trivia.',
+    category: 'Time & Date',
+    icon: <IconInfo />,
+    component: RandomFacts,
   },
   {
     id: 'currency-conv',
