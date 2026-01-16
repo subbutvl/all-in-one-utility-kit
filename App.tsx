@@ -40,7 +40,7 @@ const App: React.FC = () => {
       {!activeTool ? (
         <Home onToolSelect={handleToolSelect} />
       ) : (
-        <div className="h-full flex flex-col p-6 animate-in fade-in duration-300">
+        <div className="h-full flex flex-col p-6 animate-in fade-in duration-300 dots-grid">
           {/* Breadcrumb & Header Section */}
           <div className="mb-6 border-b border-neutral-800 pb-6">
             <nav className="flex items-center gap-2 text-[12px] uppercase tracking-widest mb-4 text-neutral-500 font-medium">
@@ -83,7 +83,7 @@ const App: React.FC = () => {
           </div>
 
           {/* Tool Workspace */}
-          <div className="flex-1 overflow-auto">
+          <div className="flex-1 overflow-auto dots-grid">
             <activeTool.component />
           </div>
         </div>

@@ -82,6 +82,10 @@ export const FontPairFinder: React.FC = () => {
     setSearchQuery('');
   };
 
+  const resetAiList = () => {
+    setAiPairs([]);
+  };
+
   const renderPairCard = (pair: FontPair, idx: number) => (
     <div key={idx} className="bg-[#111] border border-neutral-800 p-6 flex flex-col gap-6 hover:border-neutral-600 transition-colors group">
       <div className="space-y-4">
@@ -129,7 +133,12 @@ export const FontPairFinder: React.FC = () => {
               : 'border-transparent text-neutral-500 hover:text-neutral-300'
             }`}
           >
-            {tab === 'ai' ? 'AI Lab' : tab}
+            {tab === 'ai' ? (
+              <span className="flex items-center gap-2">
+                AI LAB
+                <span className="bg-white/10 text-white/50 text-[8px] px-1 border border-white/10">BETA</span>
+              </span>
+            ) : tab}
           </button>
         ))}
       </div>
@@ -145,24 +154,30 @@ export const FontPairFinder: React.FC = () => {
           <div className="flex flex-col gap-6">
             <div className="flex items-center justify-between bg-neutral-900/50 p-6 border border-neutral-800">
               <div className="max-w-md">
-                <h3 className="text-sm font-bold text-white uppercase tracking-widest mb-1">AI Recommendation Engine</h3>
-                <p className="text-xs text-neutral-500">Let Gemini suggest creative combinations based on current design trends.</p>
+                <h3 className="text-sm font-bold text-white uppercase tracking-widest mb-1">Gemini AI Engine</h3>
+                <p className="text-xs text-neutral-500 leading-relaxed">Let artificial intelligence suggest creative combinations based on current design trends.</p>
               </div>
-              <button 
-                onClick={generateNewPairs}
-                disabled={loading}
-                className={`px-8 py-3 bg-white text-black text-[11px] font-bold uppercase tracking-widest hover:bg-neutral-200 transition-all rounded-none ${loading ? 'opacity-50 cursor-not-allowed' : ''}`}
-              >
-                {loading ? 'Synthesizing...' : 'Generate New Pairs'}
-              </button>
+              <div className="flex gap-4">
+                {aiPairs.length > 0 && (
+                  <button onClick={resetAiList} className="px-6 py-3 text-[11px] uppercase tracking-widest font-bold text-neutral-600 hover:text-red-500 transition-colors">Clear</button>
+                )}
+                <button 
+                  onClick={generateNewPairs}
+                  disabled={loading}
+                  className={`px-8 py-3 bg-white text-black text-[11px] font-bold uppercase tracking-widest hover:bg-neutral-200 transition-all rounded-none ${loading ? 'opacity-50 cursor-not-allowed' : ''}`}
+                >
+                  {loading ? 'Synthesizing...' : 'Generate AI Pairs'}
+                </button>
+              </div>
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 pb-10">
               {aiPairs.length > 0 ? (
                 aiPairs.map((pair, idx) => renderPairCard(pair, idx))
               ) : (
-                <div className="col-span-full py-20 text-center border border-dashed border-neutral-800 opacity-40">
-                  <p className="text-xs uppercase tracking-widest">Click generate to start AI session</p>
+                <div className="col-span-full py-20 text-center border border-dashed border-neutral-800 opacity-20">
+                   <svg className="mx-auto mb-4 text-neutral-600" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M12 2v4"/><path d="M12 18v4"/><path d="M4.93 4.93l2.83 2.83"/><path d="M16.24 16.24l2.83 2.83"/><path d="M2 12h4"/><path d="M18 12h4"/><path d="M4.93 19.07l2.83-2.83"/><path d="M16.24 7.76l2.83-2.83"/></svg>
+                   <p className="text-xs uppercase tracking-widest font-bold">Awaiting AI Session Initialization</p>
                 </div>
               )}
             </div>
@@ -203,7 +218,7 @@ export const FontPairFinder: React.FC = () => {
                   <div className="text-[11px] font-mono text-neutral-400">
                     h1 &#123; font-family: '{selectedHeading}'; &#125; p &#123; font-family: '{selectedBody}'; &#125;
                   </div>
-                  <button onClick={resetExplorer} className="text-[10px] uppercase text-neutral-600 hover:text-red-500 font-bold tracking-widest transition-colors">Reset</button>
+                  <button onClick={resetExplorer} className="text-[10px] uppercase text-neutral-600 hover:text-red-500 font-bold tracking-widest transition-colors">Reset Explorer</button>
                 </div>
               </div>
             </div>

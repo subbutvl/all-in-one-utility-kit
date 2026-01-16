@@ -14,6 +14,7 @@ import { SwitchGenerator } from './modules/dev/SwitchGenerator';
 import { FormGenerator } from './modules/dev/FormGenerator';
 import { CursorList } from './modules/dev/CursorList';
 import { EntitiesList } from './modules/dev/EntitiesList';
+import { PatternsGenerator } from './modules/dev/PatternsGenerator';
 
 // Design Tools
 import { PaletteGenerator } from './modules/design/PaletteGenerator';
@@ -25,6 +26,8 @@ import { ColorModeConverter } from './modules/design/ColorModeConverter';
 import { ColorMixer } from './modules/design/ColorMixer';
 import { PantoneHistory } from './modules/design/PantoneHistory';
 import { HtmlColorNames } from './modules/design/HtmlColorNames';
+import { ColorFinder } from './modules/design/ColorFinder';
+import { ColorExtractor } from './modules/design/ColorExtractor';
 
 import { CaseConverter } from './modules/text/CaseConverter';
 import { PasswordGenerator } from './modules/utils/PasswordGenerator';
@@ -44,7 +47,7 @@ import { UuidGenerator } from './modules/utils/UuidGenerator';
 // World Clock
 import { WorldClock } from './modules/worldclock/WorldClock';
 
-// Calendar
+// Calendar Module
 import { Calendar } from './modules/calendar/Calendar';
 
 // Social Modules
@@ -55,6 +58,28 @@ import { InstagramGen } from './modules/social/InstagramGen';
 import { TweetGen } from './modules/social/TweetGen';
 import { FacebookGen } from './modules/social/FacebookGen';
 import { DesignPortfolioGen } from './modules/social/DesignPortfolioGen';
+
+// Unit Converters
+import { LengthConverter } from './modules/converters/LengthConverter';
+import { WeightConverter } from './modules/converters/WeightConverter';
+import { TemperatureConverter } from './modules/converters/TemperatureConverter';
+import { AreaConverter } from './modules/converters/AreaConverter';
+import { VolumeConverter } from './modules/converters/VolumeConverter';
+import { TimeConverter } from './modules/converters/TimeConverter';
+import { EnergyConverter } from './modules/converters/EnergyConverter';
+import { SpeedConverter } from './modules/converters/SpeedConverter';
+import { PressureConverter } from './modules/converters/PressureConverter';
+import { PowerConverter } from './modules/converters/PowerConverter';
+import { AngleConverter } from './modules/converters/AngleConverter';
+import { FuelConverter } from './modules/converters/FuelConverter';
+import { DataConverter } from './modules/converters/DataConverter';
+import { UnitSystemsInfo } from './modules/converters/UnitSystemsInfo';
+
+// Theme Generators
+import { BootstrapThemeBuilder } from './modules/themes/BootstrapThemeBuilder';
+import { TailwindThemeBuilder } from './modules/themes/TailwindThemeBuilder';
+import { ShadcnThemeBuilder } from './modules/themes/ShadcnThemeBuilder';
+import { PrimengThemeBuilder } from './modules/themes/PrimengThemeBuilder';
 
 // Icon Components (minimalist)
 const IconCalendar = () => <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>;
@@ -71,6 +96,8 @@ const IconPalette = () => <svg xmlns="http://www.w3.org/2000/svg" width="18" hei
 const IconEye = () => <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>;
 const IconSliders = () => <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="2" y1="14" x2="6" y2="14"/><line x1="10" y1="8" x2="14" y2="8"/><line x1="18" y1="16" x2="22" y2="16"/></svg>;
 const IconHistory = () => <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/><path d="M12 7v5l4 2"/></svg>;
+const IconScale = () => <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="M7 21h10"/><path d="M12 3v18"/><path d="M3 7h18"/></svg>;
+const IconSparkles = () => <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/><path d="M5 3v4"/><path d="M19 17v4"/><path d="M3 5h4"/><path d="M17 19h4"/></svg>;
 
 // Brand Icons
 const IconYoutube = () => <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/></svg>;
@@ -93,14 +120,30 @@ export const TOOLS: Tool[] = [
   // Calendar
   {
     id: 'global-calendar',
-    name: 'Calendar & Holidays',
-    description: 'Yearly and monthly calendar with integrated IN/US public holiday tracking.',
+    name: 'Unified Calendar',
+    description: 'Yearly view with integrated India/US federal holiday tracking and regional toggles.',
     category: 'Calendar',
     icon: <IconCalendar />,
     component: Calendar,
   },
 
   // Design Tools
+  {
+    id: 'color-finder',
+    name: 'Image Color Finder',
+    description: 'Detect Average, RMS, and Dominant colors from any uploaded image.',
+    category: 'Design Tools',
+    icon: <IconEye />,
+    component: ColorFinder,
+  },
+  {
+    id: 'color-extractor',
+    name: 'Palette Extractor',
+    description: 'Extract a cohesive 5-color palette from images using cluster analysis.',
+    category: 'Design Tools',
+    icon: <IconPalette />,
+    component: ColorExtractor,
+  },
   {
     id: 'palette-gen',
     name: 'Palette Generator',
@@ -176,12 +219,12 @@ export const TOOLS: Tool[] = [
 
   // Dev Tools
   {
-    id: 'json-formatter',
-    name: 'JSON Formatter',
-    description: 'Pretty print, minify and validate JSON data.',
+    id: 'pattern-gen',
+    name: 'Pattern Generator',
+    description: 'Create geometric CSS background patterns with live blending and geometry controls.',
     category: 'Dev Tools',
-    icon: <IconCode />,
-    component: JsonFormatter,
+    icon: <IconGrid />,
+    component: PatternsGenerator,
   },
   {
     id: 'shadow-gen',
@@ -263,46 +306,6 @@ export const TOOLS: Tool[] = [
     icon: <IconCode />,
     component: FormGenerator,
   },
-  {
-    id: 'cursor-preview',
-    name: 'Cursor List Preview',
-    description: 'Reference for all available CSS cursor types.',
-    category: 'Dev Tools',
-    icon: <IconCursor />,
-    component: CursorList,
-  },
-  {
-    id: 'html-entity-tool',
-    name: 'HTML Entity Encoder',
-    description: 'Encode/Decode individual HTML entities.',
-    category: 'Dev Tools',
-    icon: <IconCode />,
-    component: HtmlEntityTool,
-  },
-  {
-    id: 'entities-list',
-    name: 'Entities List',
-    description: 'Searchable database of HTML special characters.',
-    category: 'Dev Tools',
-    icon: <IconText />,
-    component: EntitiesList,
-  },
-  {
-    id: 'url-percent',
-    name: 'URL Percent Coder',
-    description: 'URL encode/decode strings safely.',
-    category: 'Dev Tools',
-    icon: <IconCode />,
-    component: UrlTool,
-  },
-  {
-    id: 'base64-coder',
-    name: 'Base 64 Coder',
-    description: 'Convert strings to/from Base64 format.',
-    category: 'Dev Tools',
-    icon: <IconCode />,
-    component: Base64Tool,
-  },
 
   // Text Tools
   {
@@ -331,7 +334,7 @@ export const TOOLS: Tool[] = [
   },
   {
     id: 'font-pair-finder',
-    name: 'Font Pair Finder',
+    name: 'Font Pair Finder (AI)',
     description: 'Find perfect Google Font pairings (uses Gemini AI).',
     category: 'Text Tools',
     icon: <IconText />,
@@ -347,8 +350,8 @@ export const TOOLS: Tool[] = [
   },
   {
     id: 'lorem-ipsum',
-    name: 'Lorem Ipsum',
-    description: 'Generate standard (Latin) or AI-themed placeholder text.',
+    name: 'Lorem Ipsum (AI)',
+    description: 'Generate standard (Latin) or thematic placeholder text (AI).',
     category: 'Text Tools',
     icon: <IconText />,
     component: LoremIpsum,
@@ -368,6 +371,204 @@ export const TOOLS: Tool[] = [
     category: 'Text Tools',
     icon: <IconText />,
     component: HandwritingConverter,
+  },
+
+  // Unit Converters
+  {
+    id: 'conv-length',
+    name: 'Length Converter',
+    description: 'Convert between metric and imperial length units (mm to Light Years).',
+    category: 'Unit Converters',
+    icon: <IconScale />,
+    component: LengthConverter,
+  },
+  {
+    id: 'conv-weight',
+    name: 'Weight & Mass',
+    description: 'Convert mass from milligrams to Petagrams and tons.',
+    category: 'Unit Converters',
+    icon: <IconScale />,
+    component: WeightConverter,
+  },
+  {
+    id: 'conv-temp',
+    name: 'Temperature',
+    description: 'Switch between Celsius, Fahrenheit, and Kelvin scales.',
+    category: 'Unit Converters',
+    icon: <IconScale />,
+    component: TemperatureConverter,
+  },
+  {
+    id: 'conv-area',
+    name: 'Area Converter',
+    description: 'Convert square units, hectares, and acres.',
+    category: 'Unit Converters',
+    icon: <IconScale />,
+    component: AreaConverter,
+  },
+  {
+    id: 'conv-volume',
+    name: 'Volume Converter',
+    description: 'Convert solid cubic units and liquid measurements.',
+    category: 'Unit Converters',
+    icon: <IconScale />,
+    component: VolumeConverter,
+  },
+  {
+    id: 'conv-time',
+    name: 'Time Converter',
+    description: 'Precision time unit conversion from nano-seconds to years.',
+    category: 'Unit Converters',
+    icon: <IconScale />,
+    component: TimeConverter,
+  },
+  {
+    id: 'conv-energy',
+    name: 'Energy Converter',
+    description: 'Joules, Calories, BTU, and Watt-hour conversions.',
+    category: 'Unit Converters',
+    icon: <IconScale />,
+    component: EnergyConverter,
+  },
+  {
+    id: 'conv-speed',
+    name: 'Speed Converter',
+    description: 'Km/h, Mph, Knots, and Speed of Light conversions.',
+    category: 'Unit Converters',
+    icon: <IconScale />,
+    component: SpeedConverter,
+  },
+  {
+    id: 'conv-pressure',
+    name: 'Pressure Converter',
+    description: 'Pascal, Bar, PSI, and Atmosphere units.',
+    category: 'Unit Converters',
+    icon: <IconScale />,
+    component: PressureConverter,
+  },
+  {
+    id: 'conv-power',
+    name: 'Power Converter',
+    description: 'Watts, Horsepower, and related power units.',
+    category: 'Unit Converters',
+    icon: <IconScale />,
+    component: PowerConverter,
+  },
+  {
+    id: 'conv-angle',
+    name: 'Angle Converter',
+    description: 'Convert Degrees, Radians, and Gradians.',
+    category: 'Unit Converters',
+    icon: <IconScale />,
+    component: AngleConverter,
+  },
+  {
+    id: 'conv-fuel',
+    name: 'Fuel Consumption',
+    description: 'MPG and Liters per 100km conversions.',
+    category: 'Unit Converters',
+    icon: <IconScale />,
+    component: FuelConverter,
+  },
+  {
+    id: 'conv-data',
+    name: 'Data Storage',
+    description: 'Digital storage units from Bits to Petabytes.',
+    category: 'Unit Converters',
+    icon: <IconScale />,
+    component: DataConverter,
+  },
+  {
+    id: 'conv-systems',
+    name: 'Unit Systems Reference',
+    description: 'Encyclopedia of Metric and Imperial systems.',
+    category: 'Unit Converters',
+    icon: <IconHistory />,
+    component: UnitSystemsInfo,
+  },
+
+  // Theme Generators
+  {
+    id: 'theme-bootstrap',
+    name: 'Bootstrap Builder',
+    description: 'Customize Bootstrap theme colors and generate SCSS/CSS variables.',
+    category: 'Theme Generator',
+    icon: <IconSparkles />,
+    component: BootstrapThemeBuilder,
+  },
+  {
+    id: 'theme-tailwind',
+    name: 'Tailwind Configurator',
+    description: 'Build custom Tailwind color palettes and generate config objects.',
+    category: 'Theme Generator',
+    icon: <IconSparkles />,
+    component: TailwindThemeBuilder,
+  },
+  {
+    id: 'theme-shadcn',
+    name: 'ShadCN UI Designer',
+    description: 'Visual editor for Radix-based ShadCN CSS variables for light/dark modes.',
+    category: 'Theme Generator',
+    icon: <IconSparkles />,
+    component: ShadcnThemeBuilder,
+  },
+  {
+    id: 'theme-primeng',
+    name: 'PrimeNG Builder',
+    description: 'Enterprise-grade theme builder for PrimeNG components.',
+    category: 'Theme Generator',
+    icon: <IconSparkles />,
+    component: PrimengThemeBuilder,
+  },
+
+  // Utilities
+  {
+    id: 'json-formatter',
+    name: 'JSON Formatter',
+    description: 'Pretty print, minify and validate JSON data.',
+    category: 'Utilities',
+    icon: <IconCode />,
+    component: JsonFormatter,
+  },
+  {
+    id: 'cursor-preview',
+    name: 'Cursor List Preview',
+    description: 'Reference for all available CSS cursor types.',
+    category: 'Utilities',
+    icon: <IconCursor />,
+    component: CursorList,
+  },
+  {
+    id: 'html-entity-tool',
+    name: 'HTML Entity Encoder',
+    description: 'Encode/Decode individual HTML entities.',
+    category: 'Utilities',
+    icon: <IconCode />,
+    component: HtmlEntityTool,
+  },
+  {
+    id: 'entities-list',
+    name: 'Entities List',
+    description: 'Searchable database of HTML special characters.',
+    category: 'Utilities',
+    icon: <IconText />,
+    component: EntitiesList,
+  },
+  {
+    id: 'url-percent',
+    name: 'URL Percent Coder',
+    description: 'URL encode/decode strings safely.',
+    category: 'Utilities',
+    icon: <IconCode />,
+    component: UrlTool,
+  },
+  {
+    id: 'base64-coder',
+    name: 'Base 64 Coder',
+    description: 'Convert strings to/from Base64 format.',
+    category: 'Utilities',
+    icon: <IconCode />,
+    component: Base64Tool,
   },
   {
     id: 'password-gen',
@@ -401,6 +602,8 @@ export const TOOLS: Tool[] = [
     icon: <IconTool />,
     component: UuidGenerator,
   },
+
+  // Social Tools
   {
     id: 'yt-thumbnail',
     name: 'YT Thumbnail Maker',
@@ -411,7 +614,7 @@ export const TOOLS: Tool[] = [
   },
   {
     id: 'yt-title-gen',
-    name: 'YT Title Generator',
+    name: 'YT Title Generator (AI)',
     description: 'Generate high-CTR titles (Gemini AI optimized).',
     category: 'Social Tools',
     icon: <IconYoutube />,
@@ -419,7 +622,7 @@ export const TOOLS: Tool[] = [
   },
   {
     id: 'yt-viral-kit',
-    name: 'Viral Video Strategy',
+    name: 'Viral Strategy (AI)',
     description: 'Comprehensive AI analysis to make your video go viral.',
     category: 'Social Tools',
     icon: <IconYoutube />,
@@ -427,7 +630,7 @@ export const TOOLS: Tool[] = [
   },
   {
     id: 'ig-gen',
-    name: 'Instagram Hub',
+    name: 'Instagram Hub (AI)',
     description: 'Generate viral captions and optimized hashtags.',
     category: 'Social Tools',
     icon: <IconInstagram />,
@@ -435,7 +638,7 @@ export const TOOLS: Tool[] = [
   },
   {
     id: 'tweet-gen',
-    name: 'Tweet & Thread Maker',
+    name: 'Tweet Maker (AI)',
     description: 'Craft engaging tweets and multi-post threads.',
     category: 'Social Tools',
     icon: <IconTwitter />,
@@ -443,7 +646,7 @@ export const TOOLS: Tool[] = [
   },
   {
     id: 'fb-gen',
-    name: 'Facebook Ad Copy',
+    name: 'Facebook Copy (AI)',
     description: 'Generate persuasive Facebook posts and advertisements.',
     category: 'Social Tools',
     icon: <IconFacebook />,
@@ -451,7 +654,7 @@ export const TOOLS: Tool[] = [
   },
   {
     id: 'portfolio-gen',
-    name: 'Design Portfolio Helper',
+    name: 'Portfolio Helper (AI)',
     description: 'Optimize descriptions and tags for Dribbble and Behance.',
     category: 'Social Tools',
     icon: <IconBriefcase />,
@@ -464,6 +667,8 @@ export const CATEGORIES: Category[] = [
   'Design Tools',
   'Dev Tools',
   'Text Tools',
+  'Unit Converters',
+  'Theme Generator',
   'Social Tools',
   'Utilities',
   'World Clock',

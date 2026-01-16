@@ -65,6 +65,10 @@
         ::-webkit-scrollbar-thumb:hover {
             background: #404040;
         }
+        .dots-grid {
+            background-image: radial-gradient(#7c7c7c2a 1px, #0a0a0a 1px);
+            background-size: 24px 24px;
+        }
     </style>
 <script type="importmap">
 {
@@ -79,5 +83,7 @@
 </head>
 <body class="overflow-hidden">
     <div id="root"></div>
+    <!-- Entry point script to boot the application -->
+    <script type="module" src="./index.tsx"></script>
 </body>
 </html>

@@ -38,7 +38,15 @@ export const CaseConverter: React.FC = () => {
   return (
     <div className="h-full flex flex-col gap-6">
       <div className="flex-1 flex flex-col">
-        <label className="text-[10px] uppercase text-neutral-600 font-bold mb-2">Editor</label>
+        <div className="flex items-center justify-between mb-2">
+          <label className="text-[10px] uppercase text-neutral-600 font-bold tracking-widest">Input Text</label>
+          <button 
+            onClick={resetAll}
+            className="text-[10px] uppercase text-neutral-700 hover:text-red-500 font-bold tracking-widest transition-colors"
+          >
+            Reset All
+          </button>
+        </div>
         <textarea
           value={text}
           onChange={(e) => setText(e.target.value)}
@@ -60,12 +68,6 @@ export const CaseConverter: React.FC = () => {
         <div className="flex gap-6 uppercase tracking-wider items-center">
           <span>Chars: {text.length}</span>
           <span>Words: {text.trim() === '' ? 0 : text.trim().split(/\s+/).length}</span>
-          <button 
-            onClick={resetAll}
-            className="ml-4 text-neutral-700 hover:text-red-500 transition-colors uppercase font-bold text-[10px] tracking-widest"
-          >
-            Reset All
-          </button>
         </div>
         <button 
           onClick={copyToClipboard}

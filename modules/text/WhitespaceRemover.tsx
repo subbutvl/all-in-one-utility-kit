@@ -5,7 +5,6 @@ export const WhitespaceRemover: React.FC = () => {
   const [text, setText] = useState('');
 
   const cleanWhitespace = () => {
-    // Replaces multiple spaces with single space, multiple newlines with double, trims
     const cleaned = text
       .replace(/[ \t]+/g, ' ')
       .replace(/\n\s*\n/g, '\n\n')
@@ -21,14 +20,17 @@ export const WhitespaceRemover: React.FC = () => {
     setText(text.replace(/(\r\n|\n|\r)/gm, ' '));
   };
 
-  const clearWorkspace = () => {
+  const resetAll = () => {
     setText('');
   };
 
   return (
     <div className="h-full flex flex-col gap-6">
       <div className="flex-1 flex flex-col">
-        <label className="text-[10px] uppercase text-neutral-600 font-bold mb-2 tracking-widest">Dirty Text</label>
+        <div className="flex items-center justify-between mb-2">
+          <label className="text-[10px] uppercase text-neutral-600 font-bold tracking-widest">Dirty Text</label>
+          <button onClick={resetAll} className="text-[10px] uppercase tracking-widest text-neutral-700 hover:text-red-500 font-bold transition-colors">Reset All</button>
+        </div>
         <textarea
           value={text}
           onChange={(e) => setText(e.target.value)}
@@ -55,12 +57,6 @@ export const WhitespaceRemover: React.FC = () => {
           className="px-6 py-2.5 bg-neutral-900 border border-neutral-800 text-[11px] font-bold uppercase tracking-widest hover:border-neutral-600 transition-colors rounded-none"
         >
           Strip All Spaces
-        </button>
-        <button 
-          onClick={clearWorkspace}
-          className="px-4 py-2.5 text-neutral-700 hover:text-red-500 text-[11px] uppercase tracking-widest font-bold transition-colors"
-        >
-          Clear
         </button>
         <div className="flex-1"></div>
         <button 

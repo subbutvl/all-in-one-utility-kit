@@ -11,7 +11,7 @@ const Home: React.FC<HomeProps> = ({ onToolSelect }) => {
   const getToolsByCategory = (cat: Category) => TOOLS.filter(t => t.category === cat);
 
   return (
-    <div className="h-full overflow-auto p-8 scroll-smooth">
+    <div className="h-full overflow-auto p-8 scroll-smooth dots-grid">
       <div className="max-w-6xl mx-auto">
         <header className="mb-12">
           <h1 className="text-3xl font-light tracking-tight text-white mb-2">Workspace</h1>

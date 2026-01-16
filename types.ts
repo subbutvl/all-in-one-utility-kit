@@ -1,4 +1,7 @@
 
+// Import React to resolve the "Cannot find namespace 'React'" error
+import React from 'react';
+
 export type Category = 
   | 'Image Tools' 
   | 'Design Tools' 
@@ -7,7 +10,9 @@ export type Category =
   | 'Social Tools' 
   | 'Utilities' 
   | 'World Clock' 
-  | 'Calendar';
+  | 'Calendar'
+  | 'Unit Converters'
+  | 'Theme Generator';
 
 export interface Tool {
   id: string;
