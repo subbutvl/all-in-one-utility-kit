@@ -28,7 +28,7 @@ const Home: React.FC<HomeProps> = ({ onToolSelect }) => {
 
             return (
               <section key={cat}>
-                <h2 className="text-xs uppercase tracking-[0.2em] text-neutral-600 font-bold mb-6 flex items-center gap-4">
+                <h2 className="text-sm uppercase tracking-[0.2em] text-neutral-600 font-bold mb-6 flex items-center gap-4">
                   {cat}
                   <div className="h-[1px] flex-1 bg-neutral-900"></div>
                 </h2>
@@ -47,8 +47,8 @@ const Home: React.FC<HomeProps> = ({ onToolSelect }) => {
                           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
                         </div>
                       </div>
-                      <h3 className="text-sm font-medium text-neutral-200 mb-1">{tool.name}</h3>
-                      <p className="text-xs text-neutral-500 leading-relaxed">{tool.description}</p>
+                      <h3 className="text-md font-medium text-neutral-200 mb-1">{tool.name}</h3>
+                      <p className="text-sm text-neutral-500 leading-relaxed">{tool.description}</p>
                       
                       {/* Subtle accent border on hover */}
                       <div className="absolute bottom-0 left-0 w-full h-[1px] bg-white transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>

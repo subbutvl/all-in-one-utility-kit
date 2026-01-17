@@ -43,7 +43,7 @@ const App: React.FC = () => {
         <div className="h-full flex flex-col p-6 animate-in fade-in duration-300 dots-grid">
           {/* Breadcrumb & Header Section */}
           <div className="mb-6 border-b border-neutral-800 pb-6">
-            <nav className="flex items-center gap-2 text-[12px] uppercase tracking-widest mb-4 text-neutral-500 font-medium">
+            <nav className="flex items-center gap-2 text-[14px] uppercase tracking-widest mb-4 text-neutral-500 font-medium">
               <button 
                 onClick={handleGoHome}
                 className="hover:text-white transition-colors"
@@ -68,7 +68,7 @@ const App: React.FC = () => {
                 </div>
                 <div>
                   <h1 className="text-xl font-medium text-white">{activeTool.name}</h1>
-                  <p className="text-xs text-neutral-500 mt-0.5">{activeTool.description}</p>
+                  <p className="text-sm text-neutral-500 mt-0.5">{activeTool.description}</p>
                 </div>
               </div>
               
